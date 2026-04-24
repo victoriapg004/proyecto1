@@ -1,0 +1,44 @@
+[
+    {
+        "id": "123",
+        "nombre": "vic",
+        "telefono": "88887777",
+        "tipo": "a",
+        "estado": "5"
+    },
+    {
+        "id": "1689",
+        "nombre": "n h",
+        "telefono": "555",
+        "tipo": "perm",
+        "estado": "act"
+    },
+    {
+        "id": "111",
+        "nombre": "bry",
+        "telefono": "234",
+        "tipo": "perm",
+        "estado": "inac"
+    },
+    {
+        "id": "1hdhf69-.--{{",
+        "nombre": "victoria",
+        "telefono": "34567890",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "789",
+        "nombre": "toya",
+        "telefono": "2222222",
+        "tipo": "permanente",
+        "estado": "inactivo"
+    },
+    {
+        "id": "344",
+        "nombre": "dd3",
+        "telefono": "333",
+        "tipo": "e",
+        "estado": "s"
+    }
+]
