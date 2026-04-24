@@ -20,7 +20,7 @@ def main():
     root = tk.Tk()
     MainWindow(root, controller)
     root.mainloop()
-#jijijaja
+
 if __name__ == "__main__":
-    main()
+    main() #bubalu
 
