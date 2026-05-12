@@ -22,5 +22,5 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main() #yuli
+    main() #vic, yuli me duele la cabeza
 
