@@ -80,7 +80,7 @@ class VoluntariadoService:
 
         return result
 
-    # ----------- PROCESO (IMPORTANTE PARA NOTA) -----------
+    # ----------- REPORTES -----------
 
     def horas_por_voluntario(self, voluntario_id):
 
@@ -94,3 +94,52 @@ class VoluntariadoService:
                 total += p.horas
 
         return total
+
+    def voluntario_mas_horas(self):
+
+        acumulado = {}
+
+        for p in self.part_repo.get_all():
+            if p.voluntario_id not in acumulado:
+                acumulado[p.voluntario_id]= 0
+
+            acumulado[p.voluntario_id] += p.horas
+
+        if not acumulado:
+            return  None
+
+        mejor_id = max(acumulado, key = acumulado.get)
+
+        voluntario = self.vol_repo.get_by_id(mejor_id)
+
+        return voluntario.nombre, acumulado[mejor_id]
+
+    def cantidad_voluntarios_activos(self):
+
+        total = 0
+
+        for v in self.vol_repo.get_all():
+            if v.estado.lower() == "activo":
+                total += 1
+
+        return  total
+
+
+    def actividad_mas_participacion(self):
+
+        conteo = {}
+
+        for p in self.part_repo.get_all():
+            if p.actividad_id not in conteo:
+                conteo[p.actividad_id] = 0
+
+            conteo[p.actividad_id] += 1
+
+        if not conteo:
+            return None
+
+        mejor_id = max(conteo, key = conteo.get)
+
+        actividad = self.act_repo.get_by_id(mejor_id)
+
+        return actividad.nombre, conteo[mejor_id]

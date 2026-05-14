@@ -40,5 +40,26 @@
         "telefono": "333",
         "tipo": "e",
         "estado": "s"
+    },
+    {
+        "id": "1",
+        "nombre": "Yuliana",
+        "telefono": "88886666",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "2",
+        "nombre": "Victoria",
+        "telefono": "66668888",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "3",
+        "nombre": "Aracelly",
+        "telefono": "75348965",
+        "tipo": "permanente",
+        "estado": "activo"
     }
 ]

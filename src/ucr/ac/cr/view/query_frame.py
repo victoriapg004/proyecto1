@@ -21,11 +21,17 @@ class QueryFrame(tk.Frame):
     # ---------------- VOLUNTARIOS ----------------
     def show_voluntarios(self):
         self._clear()
+        self.tree["show"] = "headings"
 
         self.tree["columns"] = ("ID", "Nombre", "Tipo", "Estado")
 
         for col in self.tree["columns"]:
             self.tree.heading(col, text=col)
+
+        self.tree.column("ID", width=100, anchor="center")
+        self.tree.column("Nombre", width=220, anchor="center")
+        self.tree.column("Tipo", width=150, anchor="center")
+        self.tree.column("Estado", width=150, anchor="center")
 
         voluntarios = self.controller.get_voluntarios()
 
@@ -37,11 +43,18 @@ class QueryFrame(tk.Frame):
     # ---------------- ACTIVIDADES ----------------
     def show_actividades(self):
         self._clear()
+        self.tree["show"] = "headings"
 
         self.tree["columns"] = ("ID", "Nombre", "Fecha", "Tipo", "Ubicación")
 
         for col in self.tree["columns"]:
             self.tree.heading(col, text=col)
+
+        self.tree.column("ID", width=100, anchor="center")
+        self.tree.column("Nombre", width=220, anchor="center")
+        self.tree.column("Fecha", width=150, anchor="center")
+        self.tree.column("Tipo", width=150, anchor="center")
+        self.tree.column("Ubicación", width=150, anchor="center")
 
         actividades = self.controller.get_actividades()
 
@@ -55,11 +68,17 @@ class QueryFrame(tk.Frame):
     # ---------------- PARTICIPACIONES ----------------
     def show_participaciones(self):
         self._clear()
+        self.tree["show"] = "headings"
 
         self.tree["columns"] = ("ID", "Voluntario", "Actividad", "Horas")
 
         for col in self.tree["columns"]:
             self.tree.heading(col, text=col)
+
+        self.tree.column("ID", width=100, anchor="center")
+        self.tree.column("Voluntario", width=220, anchor="center")
+        self.tree.column("Actividad", width=150, anchor="center")
+        self.tree.column("Horas", width=150, anchor="center")
 
         participaciones = self.controller.get_participaciones()
 

@@ -41,6 +41,10 @@ class ParticipacionFrame(tk.Frame):
             text="Registrar participación",
             font=("Arial", 12, "bold"),
             width=20,
+            bg="#cc0000",
+            fg="white",
+            activebackground="#990000",
+            activeforeground="white",
             command=self.register_participacion
         ).grid(row=4, column=0, columnspan=2, pady=15)
 

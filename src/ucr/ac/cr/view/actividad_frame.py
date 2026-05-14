@@ -46,6 +46,10 @@ class ActividadFrame(tk.Frame):
             text="Registrar actividad",
             font=("Arial", 12, "bold"),
             width=20,
+            bg="#cc0000",
+            fg="white",
+            activebackground="#990000",
+            activeforeground="white",
             command=self.register_actividad
         ).grid(row=5, column=0, columnspan=2, pady=15)
 
