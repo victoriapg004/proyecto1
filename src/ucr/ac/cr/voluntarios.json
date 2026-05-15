@@ -1,1 +1,51 @@
-[]
+[
+    {
+        "id": "1",
+        "nombre": "Maria Gonzales",
+        "telefono": "88881111",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "2",
+        "nombre": "Carlos Ramirez",
+        "telefono": "7777-2222",
+        "tipo": "ocasional",
+        "estado": "inactivo"
+    },
+    {
+        "id": "3",
+        "nombre": "Sofia Herrera",
+        "telefono": "6666-3333",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "4",
+        "nombre": "Andres Lopez",
+        "telefono": "4444-9999",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "5",
+        "nombre": "Valeria Castro",
+        "telefono": "1111-5555",
+        "tipo": "ocasional",
+        "estado": "inactivo"
+    },
+    {
+        "id": "6",
+        "nombre": "Miguel Alvarez",
+        "telefono": "8888-4444",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "7",
+        "nombre": "Ana Martinez",
+        "telefono": "99991111",
+        "tipo": "ocasional",
+        "estado": "activo"
+    }
+]
