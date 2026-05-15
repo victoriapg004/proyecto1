@@ -46,5 +46,11 @@
         "voluntario_id": "6",
         "actividad_id": "3",
         "horas": 5
+    },
+    {
+        "id": "9",
+        "voluntario_id": "7",
+        "actividad_id": "7",
+        "horas": 15
     }
 ]

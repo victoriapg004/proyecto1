@@ -40,5 +40,12 @@
         "telefono": "8888-4444",
         "tipo": "permanente",
         "estado": "activo"
+    },
+    {
+        "id": "7",
+        "nombre": "Ana Martinez",
+        "telefono": "99991111",
+        "tipo": "ocasional",
+        "estado": "activo"
     }
 ]
