@@ -1,64 +1,43 @@
 [
     {
-        "id": "123",
-        "nombre": "vic",
-        "telefono": "88887777",
-        "tipo": "a",
-        "estado": "5"
-    },
-    {
-        "id": "1689",
-        "nombre": "n h",
-        "telefono": "555",
-        "tipo": "perm",
-        "estado": "act"
-    },
-    {
-        "id": "111",
-        "nombre": "bry",
-        "telefono": "234",
-        "tipo": "perm",
-        "estado": "inac"
-    },
-    {
-        "id": "1hdhf69-.--{{",
-        "nombre": "victoria",
-        "telefono": "34567890",
-        "tipo": "ocasional",
-        "estado": "activo"
-    },
-    {
-        "id": "789",
-        "nombre": "toya",
-        "telefono": "2222222",
-        "tipo": "permanente",
-        "estado": "inactivo"
-    },
-    {
-        "id": "344",
-        "nombre": "dd3",
-        "telefono": "333",
-        "tipo": "e",
-        "estado": "s"
-    },
-    {
         "id": "1",
-        "nombre": "Yuliana",
-        "telefono": "88886666",
+        "nombre": "Maria Gonzales",
+        "telefono": "88881111",
         "tipo": "permanente",
         "estado": "activo"
     },
     {
         "id": "2",
-        "nombre": "Victoria",
-        "telefono": "66668888",
+        "nombre": "Carlos Ramirez",
+        "telefono": "7777-2222",
+        "tipo": "ocasional",
+        "estado": "inactivo"
+    },
+    {
+        "id": "3",
+        "nombre": "Sofia Herrera",
+        "telefono": "6666-3333",
         "tipo": "permanente",
         "estado": "activo"
     },
     {
-        "id": "3",
-        "nombre": "Aracelly",
-        "telefono": "75348965",
+        "id": "4",
+        "nombre": "Andres Lopez",
+        "telefono": "4444-9999",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "5",
+        "nombre": "Valeria Castro",
+        "telefono": "1111-5555",
+        "tipo": "ocasional",
+        "estado": "inactivo"
+    },
+    {
+        "id": "6",
+        "nombre": "Miguel Alvarez",
+        "telefono": "8888-4444",
         "tipo": "permanente",
         "estado": "activo"
     }

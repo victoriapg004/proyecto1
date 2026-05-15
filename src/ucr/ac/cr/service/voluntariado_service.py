@@ -176,6 +176,7 @@ class VoluntariadoService:
         acumulado = {}
 
         for p in self.part_repo.get_all():
+
             if p.voluntario_id not in acumulado:
                 acumulado[p.voluntario_id]= 0
 

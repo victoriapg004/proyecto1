@@ -1,16 +1,44 @@
 [
     {
-        "id": "111",
-        "nombre": "donar",
-        "fecha": "12-09-26",
-        "tipo": "ee",
-        "ubicacion": "san jose"
+        "id": "1",
+        "nombre": "Donar Sangre",
+        "fecha": "2026/05/22",
+        "ubicacion": "Puntarenas",
+        "capacidad_maxima": 10
     },
     {
-        "id": "2222",
-        "nombre": "tenis",
-        "fecha": "12-03-26",
-        "tipo": "ocasional",
-        "ubicacion": "puerto"
+        "id": "2",
+        "nombre": "Recoleccion de Alimentos",
+        "fecha": "2026/06/04",
+        "ubicacion": "Miramar",
+        "capacidad_maxima": 35
+    },
+    {
+        "id": "3",
+        "nombre": "Limpieza de la playa",
+        "fecha": "2026/06/12",
+        "ubicacion": "Puntarenas",
+        "capacidad_maxima": 20
+    },
+    {
+        "id": "4",
+        "nombre": "Reforestacion Comunitaria",
+        "fecha": "2026/06/22",
+        "ubicacion": "Esparza",
+        "capacidad_maxima": 12
+    },
+    {
+        "id": "5",
+        "nombre": "Colaborar con Albergues",
+        "fecha": "2026/07/02",
+        "ubicacion": "San Jose",
+        "capacidad_maxima": 10
+    },
+    {
+        "id": "6",
+        "nombre": "Donacion de Ropa",
+        "fecha": "2026/05/30",
+        "ubicacion": "El roble",
+        "capacidad_maxima": 50
     }
 ]

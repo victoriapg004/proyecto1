@@ -33,7 +33,7 @@ class VoluntariadoController:
     def get_horas_voluntario(self, voluntario_id):
         return self.service.horas_por_voluntario(voluntario_id)
 
-    def get_volunatrio_mas_horas(self):
+    def get_voluntario_mas_horas(self):
         return self.service.voluntario_mas_horas()
 
     def get_cantidad_activos(self):
