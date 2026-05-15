@@ -52,8 +52,8 @@ class MainWindow:
 
         #query_frame.set_notebook(notebook)
 
-        notebook.add(voluntario_frame, text="Voluntarios")
-        notebook.add(actividad_frame, text="Actividades")
-        notebook.add(participacion_frame, text="Participaciones")
-        notebook.add(query_frame, text="Consultas")
-        notebook.add(report_frame, text="Reportes")
+        notebook.add(voluntario_frame, text="voluntarios")
+        notebook.add(actividad_frame, text="actividades")
+        notebook.add(participacion_frame, text="participaciones")
+        notebook.add(query_frame, text="consultas")
+        notebook.add(report_frame, text="reportes")

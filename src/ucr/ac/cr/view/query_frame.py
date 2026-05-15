@@ -108,4 +108,4 @@ class QueryFrame(tk.Frame):
         for participacion in self.controller.get_participaciones():
 
             self.tree.insert("", "end",
-                             values=(participacion.id,participacion.voluntario_nombre,participacion.actividad,participacion.horas))
+                             values=(participacion.id,participacion.voluntario_nombre,participacion.actividad_nombre,participacion.horas))

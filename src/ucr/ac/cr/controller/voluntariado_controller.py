@@ -9,7 +9,7 @@ class VoluntariadoController:
         self.service.register_voluntario(id, nombre, telefono, tipo, estado)
 
     def add_actividad(self, id, nombre, fecha, ubicacion,capacidad_maxima=0):
-        self.service.register_actividad(id, nombre, fecha, ubicacion,capacidad_maxima)
+        self.service.register_actividad(id, nombre, fecha, ubicacion, capacidad_maxima)
 
     def add_participacion(self, id, voluntario_id, actividad_id, horas):
         self.service.register_participacion(id, voluntario_id, actividad_id, horas)

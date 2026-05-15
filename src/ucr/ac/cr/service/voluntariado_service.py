@@ -4,6 +4,8 @@ from src.ucr.ac.cr.model.participacion import Participacion
 from src.ucr.ac.cr.model.dto import ParticipacionViewDTO
 from datetime import datetime
 
+
+
 class VoluntariadoService:
 
     def __init__(self, vol_repo, act_repo, part_repo):
@@ -17,8 +19,16 @@ class VoluntariadoService:
         if not id.strip():
             raise ValueError("El ID no puede estar vacío")
 
+        if len(id) < 3:
+            raise ValueError("El ID debe tener al menos 3 caracteres")
+
+        if " " in id:
+            raise ValueError("El ID no puede contener espacios")
+
         if not nombre.strip():
             raise ValueError("El nombre no puede estar vacío")
+
+        nombre = nombre.title()
 
         if not telefono.strip():
             raise ValueError("El teléfono no puede estar vacío")
@@ -26,21 +36,39 @@ class VoluntariadoService:
         if not telefono.isdigit():
             raise ValueError("El teléfono solo debe contener números")
 
+        if len(telefono) != 8:
+            raise ValueError("El teléfono debe tener 8 dígitos")
+
         if tipo.lower() not in ["permanente", "ocasional"]:
-            raise ValueError("Tipo inválido")
+            raise ValueError(
+                "El tipo debe ser Permanente u Ocasional"
+            )
 
         if estado.lower() not in ["activo", "inactivo"]:
-            raise ValueError("Estado inválido")
+            raise ValueError(
+                "El estado debe ser Activo o Inactivo"
+            )
 
         for voluntario in self.vol_repo.get_all():
 
             if voluntario.id == id:
-                raise ValueError("Ya existe un voluntario con ese ID")
+                raise ValueError(
+                    "Ya existe un voluntario con ese ID"
+                )
 
             if voluntario.telefono == telefono:
-                raise ValueError("Ya existe un voluntario con ese teléfono")
+                raise ValueError(
+                    "Ya existe un voluntario con ese teléfono"
+                )
 
-        voluntario = Voluntario(id, nombre, telefono, tipo, estado)
+        voluntario = Voluntario(
+            id,
+            nombre,
+            telefono,
+            tipo,
+            estado
+        )
+
         self.vol_repo.add(voluntario)
 
     def get_voluntarios(self):
@@ -54,6 +82,7 @@ class VoluntariadoService:
             raise ValueError("Voluntario no encontrado")
 
         return voluntario
+
     # ----------- ACTIVIDAD -----------
     def register_actividad(self, id, nombre, fecha, ubicacion, capacidad_maxima):
 
@@ -115,7 +144,7 @@ class VoluntariadoService:
             if (participacion.voluntario_id == voluntario_id
                     and participacion.actividad_id == actividad_id
             ):
-                raise ValueError("El voluntario ya participa en esta actividad")
+                raise ValueError( "El voluntario ya participa en esta actividad")
 
         actividad = self.act_repo.get_by_id(actividad_id)
 
@@ -159,13 +188,13 @@ class VoluntariadoService:
     # ----------- REPORTES -----------
 
     def horas_por_voluntario(self, voluntario_id):
-
         if not self.vol_repo.exists(voluntario_id):
             raise ValueError("El voluntario no existe")
 
         total = 0
 
         for p in self.part_repo.get_all():
+
             if p.voluntario_id == voluntario_id:
                 total += p.horas
 
@@ -178,14 +207,14 @@ class VoluntariadoService:
         for p in self.part_repo.get_all():
 
             if p.voluntario_id not in acumulado:
-                acumulado[p.voluntario_id]= 0
+                acumulado[p.voluntario_id] = 0
 
             acumulado[p.voluntario_id] += p.horas
 
         if not acumulado:
-            return  None
+            return None
 
-        mejor_id = max(acumulado, key = acumulado.get)
+        mejor_id = max(acumulado, key=acumulado.get)
 
         voluntario = self.vol_repo.get_by_id(mejor_id)
 
@@ -195,27 +224,28 @@ class VoluntariadoService:
 
         total = 0
 
-        for v in self.vol_repo.get_all():
-            if v.estado.lower() == "activo":
+        for voluntario in self.vol_repo.get_all():
+
+            if voluntario.estado.lower() == "activo":
                 total += 1
 
-        return  total
-
+        return total
 
     def actividad_mas_participacion(self):
 
         conteo = {}
 
-        for p in self.part_repo.get_all():
-            if p.actividad_id not in conteo:
-                conteo[p.actividad_id] = 0
+        for participacion in self.part_repo.get_all():
 
-            conteo[p.actividad_id] += 1
+            if participacion.actividad_id not in conteo:
+                conteo[participacion.actividad_id] = 0
+
+            conteo[participacion.actividad_id] += 1
 
         if not conteo:
             return None
 
-        mejor_id = max(conteo, key = conteo.get)
+        mejor_id = max(conteo, key=conteo.get)
 
         actividad = self.act_repo.get_by_id(mejor_id)
 
