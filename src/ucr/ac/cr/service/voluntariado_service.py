@@ -2,7 +2,7 @@ from src.ucr.ac.cr.model.voluntario import Voluntario
 from src.ucr.ac.cr.model.actividad import Actividad
 from src.ucr.ac.cr.model.participacion import Participacion
 from src.ucr.ac.cr.model.dto import ParticipacionViewDTO
-
+from datetime import datetime
 
 class VoluntariadoService:
 
@@ -12,7 +12,6 @@ class VoluntariadoService:
         self.part_repo = part_repo
 
     # ----------- VOLUNTARIO -----------
-
     def register_voluntario(self, id, nombre, telefono, tipo, estado):
 
         if not id.strip():
@@ -21,17 +20,42 @@ class VoluntariadoService:
         if not nombre.strip():
             raise ValueError("El nombre no puede estar vacío")
 
+        if not telefono.strip():
+            raise ValueError("El teléfono no puede estar vacío")
+
+        if not telefono.isdigit():
+            raise ValueError("El teléfono solo debe contener números")
+
+        if tipo.lower() not in ["permanente", "ocasional"]:
+            raise ValueError("Tipo inválido")
+
+        if estado.lower() not in ["activo", "inactivo"]:
+            raise ValueError("Estado inválido")
+
+        for voluntario in self.vol_repo.get_all():
+
+            if voluntario.id == id:
+                raise ValueError("Ya existe un voluntario con ese ID")
+
+            if voluntario.telefono == telefono:
+                raise ValueError("Ya existe un voluntario con ese teléfono")
+
         voluntario = Voluntario(id, nombre, telefono, tipo, estado)
         self.vol_repo.add(voluntario)
-
-        print(self.vol_repo.get_all())
 
     def get_voluntarios(self):
         return self.vol_repo.get_all()
 
-    # ----------- ACTIVIDAD -----------
+    def get_voluntario_by_id(self, voluntario_id):
 
-    def register_actividad(self, id, nombre, fecha, tipo, ubicacion):
+        voluntario = self.vol_repo.get_by_id(voluntario_id)
+
+        if voluntario is None:
+            raise ValueError("Voluntario no encontrado")
+
+        return voluntario
+    # ----------- ACTIVIDAD -----------
+    def register_actividad(self, id, nombre, fecha, ubicacion, capacidad_maxima):
 
         if not id.strip():
             raise ValueError("El ID no puede estar vacío")
@@ -39,7 +63,33 @@ class VoluntariadoService:
         if not nombre.strip():
             raise ValueError("El nombre no puede estar vacío")
 
-        actividad = Actividad(id, nombre, fecha, tipo, ubicacion)
+        if not ubicacion.strip():
+            raise ValueError("La ubicación no puede estar vacía")
+
+        try:
+            capacidad_maxima = int(capacidad_maxima)
+
+        except ValueError:
+            raise ValueError("La capacidad máxima debe ser numérica")
+
+        if capacidad_maxima <= 0:
+            raise ValueError("La capacidad máxima debe ser mayor a 0")
+
+        for actividad in self.act_repo.get_all():
+
+            if actividad.id == id:
+                raise ValueError("Ya existe una actividad con ese ID")
+
+        try:
+            fecha_convertida = datetime.strptime(fecha, "%Y/%m/%d")
+
+        except ValueError:
+            raise ValueError("La fecha debe tener formato YYYY/MM/DD")
+
+        if fecha_convertida.date() < datetime.now().date():
+            raise ValueError("La fecha no puede ser anterior al día actual")
+
+        actividad = Actividad(id, nombre, fecha, ubicacion, capacidad_maxima)
         self.act_repo.add(actividad)
 
     def get_actividades(self):
@@ -58,7 +108,33 @@ class VoluntariadoService:
         if horas <= 0:
             raise ValueError("Las horas deben ser mayores a 0")
 
-        participacion = Participacion(id, voluntario_id, actividad_id, horas)
+        if horas > 24:
+            raise ValueError("Las horas no pueden ser mayores a 24")
+
+        for participacion in self.part_repo.get_all():
+            if (participacion.voluntario_id == voluntario_id
+                    and participacion.actividad_id == actividad_id
+            ):
+                raise ValueError("El voluntario ya participa en esta actividad")
+
+        actividad = self.act_repo.get_by_id(actividad_id)
+
+        if actividad.capacidad_maxima > 0:
+
+            participantes_actuales = 0
+
+            for participacion in self.part_repo.get_all():
+
+                if participacion.actividad_id == actividad_id:
+                    participantes_actuales += 1
+
+            if participantes_actuales >= actividad.capacidad_maxima:
+                raise ValueError("La actividad alcanzó su capacidad máxima")
+
+        participacion = Participacion(
+            id, voluntario_id, actividad_id, horas
+        )
+
         self.part_repo.add(participacion)
 
     def get_all_participaciones(self):

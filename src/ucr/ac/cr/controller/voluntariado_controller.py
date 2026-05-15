@@ -8,8 +8,8 @@ class VoluntariadoController:
     def add_voluntario(self, id, nombre, telefono, tipo, estado):
         self.service.register_voluntario(id, nombre, telefono, tipo, estado)
 
-    def add_actividad(self, id, nombre, fecha, tipo, ubicacion):
-        self.service.register_actividad(id, nombre, fecha, tipo, ubicacion)
+    def add_actividad(self, id, nombre, fecha, tipo, ubicacion,capacidad_maxima=0):
+        self.service.register_actividad(id, nombre, fecha, tipo, ubicacion,capacidad_maxima)
 
     def add_participacion(self, id, voluntario_id, actividad_id, horas):
         self.service.register_participacion(id, voluntario_id, actividad_id, horas)
@@ -18,6 +18,9 @@ class VoluntariadoController:
 
     def get_voluntarios(self):
         return self.service.get_voluntarios()
+
+    def get_voluntario_by_id(self, voluntario_id):
+        return self.service.get_voluntario_by_id(voluntario_id)
 
     def get_actividades(self):
         return self.service.get_actividades()

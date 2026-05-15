@@ -5,94 +5,107 @@ from tkinter import ttk
 class QueryFrame(tk.Frame):
 
     def __init__(self, parent, controller):
-        super().__init__(parent)
+        super().__init__(parent, bg="#f2f2f2")
+
         self.controller = controller
-        self.notebook = None
         self._build()
 
-    def set_notebook(self, notebook):
-        self.notebook = notebook
-
     def _build(self):
-        self.tree = ttk.Treeview(self)
 
-        self.tree.pack(fill="both", expand=True, padx=10, pady=10)
+        container = tk.Frame(self, bg="white", bd=2, relief="groove", padx=20, pady=20)
+
+        container.pack(padx=30, pady=20, fill="both", expand=True)
+
+        tk.Label(container, text="Consultas del sistema", font=("Arial", 20, "bold"), fg="#b30000", bg="white").pack(
+            pady=(0, 20))
+
+        button_frame = tk.Frame(container, bg="white")
+
+        button_frame.pack(pady=10)
+
+        tk.Button(button_frame, text="Ver voluntarios", font=("Arial", 12, "bold"), width=20, bg="#cc0000", fg="white", command=self.show_voluntarios).pack(
+            side="left", padx=10)
+
+        tk.Button(button_frame, text="Ver actividades", font=("Arial", 12, "bold"), width=20, bg="#cc0000", fg="white", command=self.show_actividades).pack(
+            side="left", padx=10)
+
+        tk.Button(button_frame, text="Ver participaciones", font=("Arial", 12, "bold"), width=20, bg="#cc0000", fg="white", command=self.show_participaciones).pack(
+            side="left", padx=10)
+
+        self.tree = ttk.Treeview(container)
+
+        self.tree.pack(fill="both", expand=True, pady=20)
 
     # ---------------- VOLUNTARIOS ----------------
+
     def show_voluntarios(self):
-        self._clear()
-        self.tree["show"] = "headings"
 
-        self.tree["columns"] = ("ID", "Nombre", "Tipo", "Estado")
-
-        for col in self.tree["columns"]:
-            self.tree.heading(col, text=col)
-
-        self.tree.column("ID", width=100, anchor="center")
-        self.tree.column("Nombre", width=220, anchor="center")
-        self.tree.column("Tipo", width=150, anchor="center")
-        self.tree.column("Estado", width=150, anchor="center")
-
-        voluntarios = self.controller.get_voluntarios()
-
-        for v in voluntarios:
-            self.tree.insert("", "end", values=(v.id, v.nombre, v.tipo, v.estado))
-
-        self._show()
-
-    # ---------------- ACTIVIDADES ----------------
-    def show_actividades(self):
-        self._clear()
-        self.tree["show"] = "headings"
-
-        self.tree["columns"] = ("ID", "Nombre", "Fecha", "Tipo", "Ubicación")
-
-        for col in self.tree["columns"]:
-            self.tree.heading(col, text=col)
-
-        self.tree.column("ID", width=100, anchor="center")
-        self.tree.column("Nombre", width=220, anchor="center")
-        self.tree.column("Fecha", width=150, anchor="center")
-        self.tree.column("Tipo", width=150, anchor="center")
-        self.tree.column("Ubicación", width=150, anchor="center")
-
-        actividades = self.controller.get_actividades()
-
-        for a in actividades:
-            self.tree.insert("", "end", values=(
-                a.id, a.nombre, a.fecha, a.tipo, a.ubicacion
-            ))
-
-        self._show()
-
-    # ---------------- PARTICIPACIONES ----------------
-    def show_participaciones(self):
-        self._clear()
-        self.tree["show"] = "headings"
-
-        self.tree["columns"] = ("ID", "Voluntario", "Actividad", "Horas")
-
-        for col in self.tree["columns"]:
-            self.tree.heading(col, text=col)
-
-        self.tree.column("ID", width=100, anchor="center")
-        self.tree.column("Voluntario", width=220, anchor="center")
-        self.tree.column("Actividad", width=150, anchor="center")
-        self.tree.column("Horas", width=150, anchor="center")
-
-        participaciones = self.controller.get_participaciones()
-
-        for p in participaciones:
-            self.tree.insert("", "end", values=(
-                p.id, p.voluntario, p.actividad, p.horas
-            ))
-
-        self._show()
-
-    # ---------------- UTILIDADES ----------------
-    def _clear(self):
         self.tree.delete(*self.tree.get_children())
 
-    def _show(self):
-        if self.notebook:
-            self.notebook.select(self)
+        self.tree["columns"] = (
+            "ID",
+            "Nombre",
+            "Teléfono",
+            "Tipo",
+            "Estado"
+        )
+
+        self.tree["show"] = "headings"
+
+        for col in self.tree["columns"]:
+            self.tree.heading(col, text=col)
+            self.tree.column(col, width=150)
+
+        for voluntario in self.controller.get_voluntarios():
+
+            self.tree.insert("", "end",
+                             values=(voluntario.id, voluntario.nombre, voluntario.telefono, voluntario.tipo, voluntario.estado))
+
+    # ---------------- ACTIVIDADES ----------------
+
+    def show_actividades(self):
+
+        self.tree.delete(*self.tree.get_children())
+
+        self.tree["columns"] = (
+            "ID",
+            "Nombre",
+            "Fecha",
+            "Ubicación",
+            "Capacidad"
+        )
+
+        self.tree["show"] = "headings"
+
+        for col in self.tree["columns"]:
+            self.tree.heading(col, text=col)
+            self.tree.column(col, width=140)
+
+        for actividad in self.controller.get_actividades():
+
+            self.tree.insert("", "end",
+                             values=(actividad.id, actividad.nombre, actividad.fecha, actividad.ubicacion, actividad.capacidad_maxima))
+
+    # ---------------- PARTICIPACIONES ----------------
+
+    def show_participaciones(self):
+
+        self.tree.delete(*self.tree.get_children())
+
+        self.tree["columns"] = (
+            "ID",
+            "Voluntario",
+            "Actividad",
+            "Horas"
+        )
+
+        self.tree["show"] = "headings"
+
+        for col in self.tree["columns"]:
+            self.tree.heading(col, text=col)
+            self.tree.column(col, width=180)
+
+        for participacion in self.controller.get_participaciones():
+
+            self.tree.insert("", "end",
+                             values=(participacion.id,participacion.voluntario_nombre,participacion.actividad_nombre,participacion.horas))

@@ -1,11 +1,11 @@
 class Actividad:
 
-    def __init__(self, id, nombre, fecha, tipo, ubicacion):
+    def __init__(self, id, nombre, fecha, ubicacion,capacidad_maxima):
         self.id = id
         self.nombre = nombre
         self.fecha = fecha
-        self.tipo = tipo
         self.ubicacion = ubicacion
+        self.capacidad_maxima = capacidad_maxima
 
     def to_dict(self):
         return self.__dict__

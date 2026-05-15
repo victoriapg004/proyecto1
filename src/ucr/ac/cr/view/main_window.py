@@ -18,16 +18,14 @@ class MainWindow:
         self.root.configure(bg = "#fff5f5" )
 
         self.root.title("SISTEMA DE VOLUNTARIADO DE LA CRUZ ROJA")
-        self.root.geometry("1200x750")
+        self.root.geometry("900x650")
         self.root.resizable(False, False)
 
         self._build()
 
     def _build(self):
 
-        title = tk.Label(
-            self.root,
-            text="SISTEMA DE VOLUNTARIADO DE LA CRUZ ROJA",
+        title = tk.Label(self.root,text="SISTEMA DE VOLUNTARIADO DE LA CRUZ ROJA",
             font=("Arial", 24, "bold"),
             fg = "#b30000",
             bg = "#fff5f5"
@@ -52,10 +50,10 @@ class MainWindow:
         participacion_frame = ParticipacionFrame(notebook, self.controller, query_frame)
         report_frame = ReportFrame(notebook, self.controller)
 
-        query_frame.set_notebook(notebook)
+        #query_frame.set_notebook(notebook)
 
-        notebook.add(voluntario_frame, text="voluntarios")
-        notebook.add(actividad_frame, text="actividades")
-        notebook.add(participacion_frame, text="participaciones")
-        notebook.add(query_frame, text="consultas")
-        notebook.add(report_frame, text="reportes")
+        notebook.add(voluntario_frame, text="Voluntarios")
+        notebook.add(actividad_frame, text="Actividades")
+        notebook.add(participacion_frame, text="Participaciones")
+        notebook.add(query_frame, text="Consultas")
+        notebook.add(report_frame, text="Reportes")
