@@ -47,5 +47,12 @@
         "fecha": "2026/07/10",
         "ubicacion": "Santa Teresa",
         "capacidad_maxima": 20
+    },
+    {
+        "id": "8",
+        "nombre": "Colaboracion en el Pani",
+        "fecha": "2026/08/01",
+        "ubicacion": "Santa Ana",
+        "capacidad_maxima": 22
     }
 ]

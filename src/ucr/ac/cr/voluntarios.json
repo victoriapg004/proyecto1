@@ -47,5 +47,12 @@
         "telefono": "99991111",
         "tipo": "ocasional",
         "estado": "activo"
+    },
+    {
+        "id": "8",
+        "nombre": "Sofia Castro",
+        "telefono": "88883333",
+        "tipo": "ocasional",
+        "estado": "inactivo"
     }
 ]
