@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 
 class ActividadFrame(tk.Frame):
 
@@ -33,13 +33,29 @@ class ActividadFrame(tk.Frame):
                 row=i + 1, column=0, padx=10, pady=10, sticky="e")
 
         self.entry_id = tk.Entry(container, width=35)
-        self.entry_nombre = tk.Entry(container, width=35)
+        self.nombre_var = tk.StringVar()
+
+        self.combo_nombre = ttk.Combobox(
+            container,
+            textvariable=self.nombre_var,
+            width=32,
+            state="readonly"
+        )
+
+        self.combo_nombre["values"] = (
+            "Donacion de sangre",
+            "Campaña de vacunacion",
+            "Recoleccion de alimentos",
+            "Curso de primeros auxilios"
+        )
+
+        self.combo_nombre.current(0)
         self.entry_fecha = tk.Entry(container, width=35)
         self.entry_ubicacion = tk.Entry(container, width=35)
         self.entry_capacidad = tk.Entry(container, width=35)
 
         self.entry_id.grid(row=1, column=1, padx=10, pady=10)
-        self.entry_nombre.grid(row=2, column=1, padx=10, pady=10)
+        self.combo_nombre.grid(row=2, column=1, padx=10, pady=10)
         self.entry_fecha.grid(row=3, column=1, padx=10, pady=10)
         self.entry_ubicacion.grid(row=4, column=1, padx=10, pady=10)
         self.entry_capacidad.grid(row=5, column=1, padx=10, pady=10)
@@ -55,7 +71,7 @@ class ActividadFrame(tk.Frame):
         try:
 
             id_ = self.entry_id.get()
-            nombre = self.entry_nombre.get()
+            nombre = self.nombre_var.get()
             fecha = self.entry_fecha.get()
             ubicacion = self.entry_ubicacion.get()
             capacidad = self.entry_capacidad.get()
@@ -75,7 +91,7 @@ class ActividadFrame(tk.Frame):
     def clear_entries(self):
 
         self.entry_id.delete(0, tk.END)
-        self.entry_nombre.delete(0, tk.END)
+        self.combo_nombre.current(0)
         self.entry_fecha.delete(0, tk.END)
         self.entry_ubicacion.delete(0, tk.END)
         self.entry_capacidad.delete(0, tk.END)

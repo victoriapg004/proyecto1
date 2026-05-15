@@ -1,1 +1,44 @@
-[]
+[
+    {
+        "id": "111",
+        "nombre": "Vic",
+        "telefono": "88965534",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "222",
+        "nombre": "Yuli",
+        "telefono": "98753578",
+        "tipo": "permanente",
+        "estado": "inactivo"
+    },
+    {
+        "id": "333",
+        "nombre": "Aracelly",
+        "telefono": "23457368",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "0000",
+        "nombre": "Mario",
+        "telefono": "56784314",
+        "tipo": "ocasional",
+        "estado": "activo"
+    },
+    {
+        "id": "777",
+        "nombre": "Maria",
+        "telefono": "56894965",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "2020",
+        "nombre": "Bryan",
+        "telefono": "67895432",
+        "tipo": "permanente",
+        "estado": "activo"
+    }
+]

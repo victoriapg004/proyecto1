@@ -72,7 +72,7 @@ class QueryFrame(tk.Frame):
             "Nombre",
             "Fecha",
             "Ubicación",
-            "Capacidad"
+            "Cupos disponibles"
         )
 
         self.tree["show"] = "headings"
@@ -81,11 +81,31 @@ class QueryFrame(tk.Frame):
             self.tree.heading(col, text=col)
             self.tree.column(col, width=140)
 
-        for actividad in self.controller.get_actividades():
+        actividades = self.controller.get_actividades()
+        participaciones = self.controller.get_participaciones()
 
-            self.tree.insert("", "end",
-                             values=(actividad.id, actividad.nombre, actividad.fecha, actividad.ubicacion, actividad.capacidad_maxima))
+        for actividad in actividades:
 
+            usados = 0
+
+            for participacion in participaciones:
+
+                if participacion.actividad_nombre == actividad.nombre:
+                    usados += 1
+
+            disponibles = actividad.capacidad_maxima - usados
+
+            self.tree.insert(
+                "",
+                "end",
+                values=(
+                    actividad.id,
+                    actividad.nombre,
+                    actividad.fecha,
+                    actividad.ubicacion,
+                    disponibles
+                )
+            )
     # ---------------- PARTICIPACIONES ----------------
 
     def show_participaciones(self):

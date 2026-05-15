@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "id": "1212",
+        "nombre": "donar sangre",
+        "fecha": "2026/05/15",
+        "ubicacion": "puerto",
+        "capacidad_maxima": 25
+    },
+    {
+        "id": "1313",
+        "nombre": "curso primeros auxilios",
+        "fecha": "2026/07/24",
+        "ubicacion": "san jose",
+        "capacidad_maxima": 1
+    },
+    {
+        "id": "2004",
+        "nombre": "Campa\u00f1a de vacunacion",
+        "fecha": "2026/05/25",
+        "ubicacion": "san ramon",
+        "capacidad_maxima": 15
+    }
+]
