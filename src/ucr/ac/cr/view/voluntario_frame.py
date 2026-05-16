@@ -19,8 +19,8 @@ class VoluntarioFrame(tk.Frame):
             bg="white",
             bd=2,
             relief="groove",
-            padx=20,
-            pady=20
+            padx=10,
+            pady=10
         )
 
         container.pack(
