@@ -14,7 +14,7 @@ class ActividadFrame(tk.Frame):
     def _build(self):
 
         container = tk.Frame(self, bg="white", bd=2, relief="groove", padx=20, pady=20)
-        container.pack(padx=30, pady=20, fill="x")
+        container.pack(padx=20, pady=10, fill="x")
 
         tk.Label(container, text="Registrar nueva actividad", font=("Arial", 18, "bold"), fg="#b30000", bg="white").grid(
             row=0, column=0, columnspan=2, pady=(0, 20)

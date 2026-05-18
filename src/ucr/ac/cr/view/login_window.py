@@ -1,4 +1,6 @@
 import tkinter as tk
+from PIL import Image, ImageTk
+import os
 from tkinter import messagebox
 
 from src.ucr.ac.cr.view.main_window import MainWindow
@@ -14,7 +16,7 @@ class LoginWindow:
         self.intentos = 3
 
         self.root.title("Login")
-        self.root.geometry("400x500")
+        self.root.geometry("400x550")
         self.root.configure(bg="#fff5f5")
         self.root.resizable(False, False)
 
@@ -37,6 +39,29 @@ class LoginWindow:
             fill="both",
             expand=True
         )
+
+        ruta_logo = os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "images",
+            "cruzRoja.jpg"
+        )
+
+        imagen = Image.open(ruta_logo)
+
+        imagen = imagen.resize((100, 100), Image.LANCZOS)
+
+        self.logo = ImageTk.PhotoImage(imagen)
+
+        logo_label = tk.Label(
+            container,
+            image=self.logo,
+            bg="white"
+        )
+
+        logo_label.image = self.logo
+
+        logo_label.pack(pady=10)
 
         tk.Label(
             container,

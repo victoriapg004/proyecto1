@@ -1,23 +1,23 @@
 [
     {
-        "id": "1212",
-        "nombre": "donar sangre",
+        "id": "01",
+        "nombre": "Donar Sangre",
         "fecha": "2026/05/15",
-        "ubicacion": "puerto",
+        "ubicacion": "Puntarenas",
         "capacidad_maxima": 25
     },
     {
-        "id": "1313",
-        "nombre": "curso primeros auxilios",
+        "id": "02",
+        "nombre": "Curso primeros auxilios",
         "fecha": "2026/07/24",
         "ubicacion": "san jose",
-        "capacidad_maxima": 1
+        "capacidad_maxima": 2
     },
     {
-        "id": "2004",
+        "id": "03",
         "nombre": "Campa\u00f1a de vacunacion",
         "fecha": "2026/05/25",
-        "ubicacion": "san ramon",
+        "ubicacion": "San Ramon",
         "capacidad_maxima": 15
     },
     {
