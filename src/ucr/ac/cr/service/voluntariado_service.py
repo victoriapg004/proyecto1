@@ -28,6 +28,11 @@ class VoluntariadoService:
         if not nombre.strip():
             raise ValueError("El nombre no puede estar vacío")
 
+        if not nombre.replace(" ", "").isalpha():
+            raise ValueError(
+                "El nombre no es válido"
+            )
+
         nombre = nombre.title()
 
         if not telefono.strip():
@@ -128,8 +133,27 @@ class VoluntariadoService:
 
     def register_participacion(self, id, voluntario_id, actividad_id, horas):
 
+        if not id.strip():
+            raise ValueError("El ID de participación no puede estar vacío")
+
+        if len(id) < 3:
+            raise ValueError("El ID debe tener al menos 3 caracteres")
+
+        if " " in id:
+            raise ValueError("El ID no puede contener espacios")
+
+        if self.part_repo.exists(id):
+            raise ValueError("Ya existe una participación con ese ID")
+
         if not self.vol_repo.exists(voluntario_id):
             raise ValueError("El voluntario no existe")
+
+        voluntario = self.vol_repo.get_by_id(voluntario_id)
+
+        if voluntario.estado.lower() == "inactivo":
+            raise ValueError(
+                "El voluntario está inactivo y no puede participar"
+            )
 
         if not self.act_repo.exists(actividad_id):
             raise ValueError("La actividad no existe")
@@ -141,10 +165,12 @@ class VoluntariadoService:
             raise ValueError("Las horas no pueden ser mayores a 24")
 
         for participacion in self.part_repo.get_all():
+
             if (participacion.voluntario_id == voluntario_id
-                    and participacion.actividad_id == actividad_id
-            ):
-                raise ValueError( "El voluntario ya participa en esta actividad")
+                    and participacion.actividad_id == actividad_id):
+                raise ValueError(
+                    "El voluntario ya participa en esta actividad"
+                )
 
         actividad = self.act_repo.get_by_id(actividad_id)
 
@@ -158,10 +184,15 @@ class VoluntariadoService:
                     participantes_actuales += 1
 
             if participantes_actuales >= actividad.capacidad_maxima:
-                raise ValueError("La actividad alcanzó su capacidad máxima")
+                raise ValueError(
+                    "La actividad alcanzó su capacidad máxima"
+                )
 
         participacion = Participacion(
-            id, voluntario_id, actividad_id, horas
+            id,
+            voluntario_id,
+            actividad_id,
+            horas
         )
 
         self.part_repo.add(participacion)
