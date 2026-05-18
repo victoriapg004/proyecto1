@@ -30,7 +30,7 @@ class VoluntariadoService:
 
         if not nombre.replace(" ", "").isalpha():
             raise ValueError(
-                "El nombre no es válido"
+                "El nombre solo debe contener letras"
             )
 
         nombre = nombre.title()
