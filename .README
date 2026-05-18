@@ -1,0 +1,66 @@
+# Sistema de Voluntariado Cruz Roja
+
+Este proyecto consiste en un sistema de gestión de voluntariado inspirado en la Cruz Roja.
+El sistema permite registrar voluntarios, actividades y participaciones, y a su vez
+generar reportes y consultas dinámicas mediante una interfaz gráfica en Python con Tkinter.
+El proyecto fue desarrollado utilizando arquitectura MVC para separar la lógica, la interfaz y el manejo de datos.
+
+## Funcionalidades
+- Registro de voluntarios
+- Registro de actividades
+- Registro de participaciones
+- Validaciones de datos
+- Persistencia con archivos JSON
+- Login de acceso al sistema
+- Consultas dinámicas
+- Reportes de voluntariado
+- Control de capacidad máxima
+- Validación de voluntarios activos
+
+##Se utlizaron:
+- Python
+- Tkinter
+- JSON
+- Arquitectura MVC
+
+## Estructura del proyecto
+src/ucr/ac/cr
+controller/
+images/
+model/
+repository/
+service/
+view/
+main.py
+
+- model: contiene las entidades y atributos
+- view: contiene la interfaz gráfica
+- controller: conecta la vista con la lógica del sistema
+- repositories: administra el almacenamiento y recuperacion de datos en archivos JSON.
+- service: contiene la logica del sistema y validaciones
+
+## Validaciones
+- Teléfono solo numérico
+- Nombre con solo letras
+- IDs duplicados
+- Participaciones duplicadas
+- Validación de fechas
+- Control de capacidad máxima
+- Restricción de voluntarios inactivos
+- Horas válidas de participación
+
+## Reportes
+- Horas totales por voluntario
+- Voluntario con más horas
+- Cantidad de voluntarios activos
+- Actividad con mayor participación
+
+## Ejecución del proyecto
+1. Clonar el repositorio
+2. Abrir el proyecto en PyCharm
+3. Ejecutar el archivo main.py
+
+## Integrantes
+- Aracelly Araya C30554
+- Victoria Porras C4I492
+- Yuliana Ureña C4K498

@@ -75,5 +75,12 @@
         "telefono": "67997578",
         "tipo": "permanente",
         "estado": "activo"
+    },
+    {
+        "id": "123",
+        "nombre": "Victoriaa",
+        "telefono": "00000000",
+        "tipo": "permanente",
+        "estado": "inactivo"
     }
 ]
