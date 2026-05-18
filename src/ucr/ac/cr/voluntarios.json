@@ -40,5 +40,40 @@
         "telefono": "67895432",
         "tipo": "permanente",
         "estado": "activo"
+    },
+    {
+        "id": "001",
+        "nombre": "Floria",
+        "telefono": "56780976",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "002",
+        "nombre": "Luis",
+        "telefono": "56437809",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "gfd",
+        "nombre": "Gf",
+        "telefono": "12345678",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "19977",
+        "nombre": "568",
+        "telefono": "56896789",
+        "tipo": "permanente",
+        "estado": "activo"
+    },
+    {
+        "id": "6799",
+        "nombre": "*&(",
+        "telefono": "67997578",
+        "tipo": "permanente",
+        "estado": "activo"
     }
 ]
