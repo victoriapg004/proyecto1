@@ -82,7 +82,8 @@ class QueryFrame(tk.Frame):
             self.tree.column(col, width=140)
 
         actividades = self.controller.get_actividades()
-        participaciones = self.controller.get_participaciones()
+
+        participaciones = self.controller.service.part_repo.get_all()
 
         for actividad in actividades:
 
@@ -90,10 +91,13 @@ class QueryFrame(tk.Frame):
 
             for participacion in participaciones:
 
-                if participacion.actividad_nombre == actividad.nombre:
+                if participacion.actividad_id == actividad.id:
                     usados += 1
 
             disponibles = actividad.capacidad_maxima - usados
+
+            if disponibles < 0:
+                disponibles = 0
 
             self.tree.insert(
                 "",

@@ -59,12 +59,48 @@ class ParticipacionFrame(tk.Frame):
             id_ = self.entry_id.get()
             voluntario_id = self.entry_voluntario.get()
             actividad_id = self.entry_actividad.get()
+            horas_texto = self.entry_horas.get()
 
-            horas = int(self.entry_horas.get())
 
-            self.controller.add_participacion(id_,voluntario_id,actividad_id,horas)
+            if not id_.strip():
+                raise ValueError(
+                    "El ID de participación no puede estar vacío"
+                )
 
-            messagebox.showinfo( "Éxito", "Participación registrada correctamente")
+            if not voluntario_id.strip():
+                raise ValueError(
+                    "El ID del voluntario no puede estar vacío"
+                )
+
+            if not actividad_id.strip():
+                raise ValueError(
+                    "El ID de la actividad no puede estar vacío"
+                )
+
+            if not horas_texto.strip():
+                raise ValueError(
+                    "Las horas no pueden estar vacías"
+                )
+
+
+            if not horas_texto.isdigit():
+                raise ValueError(
+                    "Las horas deben ser numéricas"
+                )
+
+            horas = int(horas_texto)
+
+            self.controller.add_participacion(
+                id_,
+                voluntario_id,
+                actividad_id,
+                horas
+            )
+
+            messagebox.showinfo(
+                "Éxito",
+                "Participación registrada correctamente"
+            )
 
             self.clear_entries()
 

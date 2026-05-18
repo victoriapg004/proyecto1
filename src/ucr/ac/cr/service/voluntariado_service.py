@@ -142,6 +142,13 @@ class VoluntariadoService:
         if " " in id:
             raise ValueError("El ID no puede contener espacios")
 
+        if not voluntario_id.strip():
+            raise ValueError("El ID del voluntario no puede estar vacío")
+
+        if not actividad_id.strip():
+            raise ValueError("El ID de la actividad no puede estar vacío")
+
+
         if self.part_repo.exists(id):
             raise ValueError("Ya existe una participación con ese ID")
 
